@@ -1,0 +1,190 @@
+\makeatletter %Make @ valid
+
+
+\@ifclasswith{article}{xe}{
+  \usepackage{xeCJK}
+  \setCJKmainfont[AutoFakeBold=true, AutoFakeSlant=true]{BiauKaiTC}
+  \setCJKsansfont[AutoFakeBold=true, AutoFakeSlant=true]{NotoSansTC-Regular}
+  \XeTeXlinebreaklocale "zh"
+  \XeTeXlinebreakskip = 0pt plus 1pt
+}{
+  \usepackage{CJKutf8} %
+}
+
+%\usepackage{libertine} % Use the Libertine font
+%\usepackage{charter} % Use the Charter font
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+
+\usepackage{geometry}%
+\geometry{
+%  showframe,
+  a4paper,
+  left=2.54cm,
+  right=2.54cm,
+  top=3.17cm,
+  bottom=3.17cm,
+  headheight=25pt
+}
+
+\usepackage{titling}
+\setlength{\droptitle}{-9em}
+\renewcommand{\maketitlehookb}{\vspace{-2em}}
+\renewcommand{\maketitlehookc}{\vspace{-2em}}
+\renewcommand{\maketitlehookd}{\vspace{-2em}}
+
+\usepackage{amsfonts} %
+\usepackage{amsmath} %
+\usepackage{amssymb} %
+\usepackage{amsthm} %
+\usepackage{array} %
+\usepackage{caption} %caption
+\usepackage{centernot} %not symbol
+\usepackage[inline, shortlabels]{enumitem} %list
+\usepackage{fancyhdr} %header and foot
+\usepackage{graphicx} %graphic
+\usepackage{imakeidx} %index table
+  \makeindex[intoc, title=Index,
+    options= -s /Users/jack/Documents/Latex_headers/index_style.ist]
+  \indexsetup{othercode={\lhead{\emph{Index}}}}
+\usepackage{hyperref} %hyperlink
+\usepackage{import} %import
+\usepackage{listings}
+\usepackage[scr=rsfs]{mathalfa} %mathfont
+\usepackage{mathdots} %dots
+\usepackage{mathtools} %math symbol
+\usepackage[framemethod=TikZ]{mdframed} %box
+\usepackage{multicol}
+\usepackage{nicematrix} %matrix
+\usepackage{pgfplots} %graphmake
+  \pgfplotsset{compat=newest, compat/show suggested version=false}
+\usepackage{romannum} %romannumber
+\usepackage{siunitx} %physical quantities
+\usepackage{stmaryrd}
+\usepackage{subcaption}
+\usepackage{tabularx} %table
+\usepackage{thmtools} %math thm
+\usepackage{tikz} %graphmake
+  \usetikzlibrary{cd}
+\usepackage{tkz-euclide}
+\usepackage[center]{titlesec}
+\usepackage[normalem]{ulem} %underlining for emphasis
+\usepackage{xcolor} %color
+%\usepackage{xparse}
+\usepackage[all]{xy} %Xy-pic diagram
+%\usepackage{algorithm}
+%\usepackage{algpseudocode}
+%\usepackage{algpascal}
+\usepackage[boxed, longend]{algorithm2e} %algorithm
+  \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+  \SetKwProg{Fn}{Function}{\string:}{}
+
+\usepackage{lipsum}
+
+%titlesec
+\renewcommand{\thesection}{\Roman{section}}
+\titleformat{\section}
+  {\centering\normalsize\scshape}%\bfseries\uppercase
+  {\thesection. }
+  {12pt}
+  {}
+
+%hdr
+\pagestyle{fancy}
+%\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\quad \textsc{#1}}}
+
+\fancyhf{}
+\fancyhead[L]{}%\leftmark
+\fancyhead[C]{}%\textsc{\thetitle}
+\fancyhead[R]{\rightmark}%\rightmark
+\fancyfoot[L]{}
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{}%\leftmark
+
+
+%thmtools
+\mdfsetup{skipabove=1em, skipbelow=1em, innertopmargin=5pt, innerbottommargin=6pt}
+
+\theoremstyle{plain}
+
+\declaretheoremstyle[
+  headfont=\rmfamily\bfseries\scshape,
+  bodyfont=\rmfamily\mdseries,
+  %headpunct=.,
+  %notebraces={(}{)},
+  %postheadspace=\newline,
+  mdframed={leftline=true, rightline=true, topline=true, bottomline=true}
+]{framedaround}
+
+\declaretheoremstyle[
+  headfont=\rmfamily\bfseries\scshape,
+  bodyfont=\rmfamily\mdseries,
+  mdframed={leftline=true, rightline=false, topline=false, bottomline=false}
+]{framedleft}
+
+\declaretheoremstyle[
+  headfont=\rmfamily\itshape,
+  bodyfont=\rmfamily\mdseries,
+  notebraces={ (}{)},
+  headpunct={. },
+  mdframed={skipabove=0em, leftline=true, rightline=false, topline=false, bottomline=false},
+  qed={/\!/\!/\!/}
+]{proofbox}
+
+\declaretheoremstyle[
+  headfont=\rmfamily\itshape,
+  bodyfont=\rmfamily\mdseries,
+  notebraces={ (}{)},
+  headpunct=.,
+  mdframed={skipabove=0em, leftline=true, rightline=false, topline=false, bottomline=false}
+]{solbox}
+
+\declaretheoremstyle[%
+  %spaceabove=1em,
+  headfont=\rmfamily\bfseries,%
+  bodyfont=\rmfamily\mdseries,%
+  headpunct=.,
+  %mdframed={skipabove=0em, leftline=false, rightline=false, topline=false, bottomline=false}
+]{defaultstyle}
+
+\declaretheoremstyle[%
+  %spaceabove=1em,
+  headfont=\rmfamily\itshape,%
+  bodyfont=\rmfamily\mdseries,%
+  %mdframed={skipabove=0em, leftline=false, rightline=false, topline=false, bottomline=false}
+]{defaultitstyle}
+
+\declaretheorem[style=defaultitstyle, numbered=no, name=Definition]{defi}
+\declaretheorem[style=defaultitstyle, numbered=no, name=Theorem]{thm}
+\declaretheorem[style=defaultitstyle, numbered=no, name=Lemma]{lem}
+\declaretheorem[style=defaultitstyle, numbered=no, name=Corollary]{cor}
+\declaretheorem[style=defaultitstyle, numbered=no, name=Proposition]{prop}
+\declaretheorem[style=defaultstyle, numbered=no, name=Remark]{rmk}
+\declaretheorem[style=framedaround, numbered=no, name=Notation]{notation}
+\declaretheorem[style=defaultstyle, numbered=no, name=Agreement]{agt}
+\declaretheorem[style=defaultstyle, numbered=no, name=Fact]{fact}
+\declaretheorem[style=defaultstyle, numbered=no, name=Example]{eg}
+\declaretheorem[style=defaultstyle, numbered=yes, name=Exercise]{ex}
+\declaretheorem[style=defaultstyle, numbered=yes, name=Problem]{pb}
+\declaretheorem[style=proofbox, numbered=no, name=Proof]{pf}
+\declaretheorem[style=defaultstyle, numbered=no, name=Solution]{sol}
+\declaretheorem[style=defaultitstyle, numbered=no, name=Answer]{ans}
+\declaretheorem[style=framedleft, numbered=no, name=Question]{question}
+\declaretheorem[style=proofbox, numbered=no, name=Sketch]{sketch}
+\declaretheorem[style=defaultstyle, numbered=no, name=Algorithm]{algo}
+
+
+%list
+%\setlist{leftmargin=1.5\parindent}
+
+
+%math
+\input{/Users/jack/Documents/Latex_headers/math_operators_and_terminologies.tex}
+
+
+%others
+\linespread{1.36}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+
+
+\makeatother
