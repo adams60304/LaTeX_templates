@@ -1,0 +1,120 @@
+\makeatletter %Make @ valid
+
+
+\@ifclasswith{beamer}{xe}{
+  \usepackage{xeCJK}
+  \setCJKmainfont[AutoFakeBold=true, AutoFakeSlant=true]{BiauKaiTC}
+  \setCJKsansfont[AutoFakeBold=true, AutoFakeSlant=true]{NotoSansTC-Regular}
+  \XeTeXlinebreaklocale "zh"
+  \XeTeXlinebreakskip = 0pt plus 1pt
+}{
+  \usepackage{CJKutf8} %
+}
+
+\usetheme{Madrid}
+%\usefonttheme{professionalfonts}
+\usefonttheme{serif}
+%\usepackage{libertine} %special font
+
+\usepackage{amsfonts} %
+\usepackage{amsmath} %
+\usepackage{amssymb} %
+\usepackage{amsthm} %
+\usepackage{array} %
+\usepackage{caption} %caption
+\usepackage{centernot} %not symbol
+%\usepackage[inline, shortlabels]{enumitem} %list
+\usepackage{fancyhdr} %header and foot
+\usepackage{graphicx} %graphic
+%\usepackage{imakeidx} %index table
+%  \makeindex[intoc, title=Index,
+%    options= -s /Users/jack/Documents/Latex_headers/index_style.ist]
+%  \indexsetup{othercode={\lhead{\emph{Index}}}}
+\usepackage{hyperref} %hyperlink
+\usepackage{import} %import
+\usepackage[scr=rsfs]{mathalfa} %mathfont
+\usepackage{mathdots} %dots
+\usepackage{mathtools} %math symbol
+\usepackage[framemethod=TikZ]{mdframed} %box
+\usepackage{multicol}
+\usepackage{nicematrix} %matrix
+\usepackage{pgfplots} %graphmake
+  \pgfplotsset{compat=newest, compat/show suggested version=false}
+\usepackage{romannum} %romannumber
+\usepackage{siunitx} %physical quantities
+\usepackage{stmaryrd}
+\usepackage{subcaption}
+\usepackage{tabularx} %table
+\usepackage{thmtools} %math thm
+\usepackage{tikz} %graphmake
+  \usetikzlibrary{positioning, shapes.geometric}
+%  \usetikzlibrary{cd}
+\usepackage{tikz-cd}
+\usepackage{tkz-euclide}
+\usepackage[normalem]{ulem} %underlining for emphasis
+\usepackage{xcolor} %color
+%\usepackage{xparse}
+\usepackage[all]{xy} %Xy-pic diagram
+%\usepackage{algorithm}
+%\usepackage{algpseudocode}
+%\usepackage{algpascal}
+\usepackage[boxed, longend]{algorithm2e} %algorithm
+  \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+  \SetKwProg{Fn}{Function}{\string:}{}
+
+\usepackage{lipsum}
+
+
+%theorems
+\mdfsetup{skipabove=1em, skipbelow=0em, innertopmargin=.5em, innerbottommargin=.5em}
+
+\theoremstyle{plain}
+
+\declaretheoremstyle[%
+  spaceabove=1em,
+  headfont=\rmfamily\bfseries\scshape,%
+  bodyfont=\rmfamily\mdseries,%
+]{defaultstyle}
+
+\declaretheoremstyle[
+  headfont=\rmfamily\bfseries\scshape,
+  bodyfont=\rmfamily\mdseries,
+  notebraces={}{},
+  headpunct=.,
+  qed=/\!/\!/\!/%\qedsymbol
+]{proofbox}
+
+\declaretheoremstyle[
+  headfont=\rmfamily\bfseries\scshape,
+  bodyfont=\rmfamily\mdseries,
+  notebraces={}{},
+  headpunct=.,
+  mdframed={skipabove=0em, leftline=true, rightline=false, topline=false, bottomline=false, nobreak=false}
+]{noqedproofbox}
+
+\declaretheorem[style=defaultstyle, numbered=no, name=Definition]{defi}
+\declaretheorem[style=defaultstyle, numbered=no, name=Theorem]{thm}
+\declaretheorem[style=defaultstyle, numbered=no, name=Lemma]{lem}
+\declaretheorem[style=defaultstyle, numbered=no, name=Corollary]{cor}
+\declaretheorem[style=defaultstyle, numbered=no, name=Proposition]{prop}
+\declaretheorem[style=defaultstyle, numbered=no, name=Remark]{rmk}
+\declaretheorem[style=defaultstyle, numbered=no, name=Notation]{notation}
+
+\declaretheorem[style=noqedproofbox, numbered=no, name=Proof]{pf}
+\declaretheorem[style=noqedproofbox, numbered=no, name=Sketch]{sk}
+
+\declaretheorem[style=defaultstyle, numbered=no, name=Agreement]{agt}
+\declaretheorem[style=defaultstyle, numbered=no, name=Example]{eg}
+\declaretheorem[style=defaultstyle, numbered=no, name=Exercise]{ex}
+\declaretheorem[style=defaultstyle, numbered=no, name=Question]{question}
+
+
+%math
+\input{/Users/jack/Documents/Latex_headers/math_operators_and_terminologies.tex}
+
+
+%others
+%\linespread{1.36}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+
+\makeatother
