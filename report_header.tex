@@ -1,0 +1,202 @@
+\makeatletter %Make @ valid
+
+
+\@ifclasswith{report}{xe}{
+  \usepackage{xeCJK}
+  \setCJKmainfont[AutoFakeBold=true, AutoFakeSlant=true]{BiauKaiTC}
+  \setCJKsansfont[AutoFakeBold=true, AutoFakeSlant=true]{NotoSansTC-Regular}
+  \XeTeXlinebreaklocale "zh"
+  \XeTeXlinebreakskip = 0pt plus 1pt
+}{
+  \usepackage{CJKutf8} %
+}
+
+%\usepackage{libertine} %special font
+
+\usepackage{geometry}%
+\geometry{%
+  a4paper,%
+  total={170mm, 257mm},%
+  left=20mm,%
+  top=20mm,%
+  headheight=15pt
+}
+
+\usepackage{amsfonts} %
+\usepackage{amsmath} %
+\usepackage{amssymb} %
+\usepackage{amsthm} %
+\usepackage{array} %
+\usepackage{caption} %caption
+\usepackage{centernot} %not symbol
+\usepackage[inline, shortlabels]{enumitem} %list
+\usepackage{fancyhdr} %header and foot
+\usepackage{graphicx} %graphic
+\usepackage{imakeidx} %index table
+  \makeindex[intoc, title=Index,
+    options= -s /Users/jack/Documents/Latex_headers/index_style.ist]
+  \indexsetup{othercode={\lhead{\emph{Index}}}}
+
+\usepackage{hyperref} %hyperlink
+\usepackage{import} %import
+\usepackage[scr=rsfs]{mathalfa} %mathfont
+\usepackage{mathdots} %dots
+\usepackage{mathtools} %math symbol
+\usepackage[framemethod=TikZ]{mdframed} %box
+\usepackage{multicol}
+\usepackage{nicematrix} %matrix
+\usepackage{pgfplots} %graphmake
+  \pgfplotsset{compat=newest, compat/show suggested version=false}
+
+\usepackage{romannum} %romannumber
+\usepackage{siunitx} %physical quantities
+\usepackage[only, mapsfrom, longmapsfrom]{stmaryrd} %
+\usepackage{subfigure}
+\usepackage{tabularx} %table
+\usepackage{thmtools} %math thm
+\usepackage{tikz} %graphmake
+  \usetikzlibrary{cd}
+\usepackage{tkz-euclide}
+\usepackage[normalem]{ulem} %underlining for emphasis
+\usepackage{xcolor} %color
+%\usepackage{xparse}
+\usepackage[all]{xy} %Xy-pic diagram
+%\usepackage{algorithm}
+%\usepackage{algpseudocode}
+%\usepackage{algpascal}
+\usepackage[ruled, longend]{algorithm2e} %algorithm
+  \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+  \SetKwProg{Fn}{Function}{\string:}{}
+
+\usepackage{lipsum}
+
+
+%title
+\ifx\ntitle\undefined
+  \def\ntitle{Note}
+\else
+\fi
+\ifx\nauthor\undefined
+  \def\nauthor{KT}
+\else
+\fi
+\ifx\ndate\undefined
+  \def\ndate{\today}
+\else
+\fi
+
+\title{\Huge{\textsc{\ntitle}}}
+\author{\Large{\nauthor}}
+\date{\large{\ndate}}
+
+
+%fancyhdr
+\usepackage{fourier-orns}
+\renewcommand{\headrule}{%
+  \hrulefill
+  \raisebox{-2.1pt}{\quad\decofourleft\decotwo\decofourright\quad}%
+  \hrulefill
+}
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{%
+  \markboth{\MakeUppercase{%
+  \chaptername}\ \thechapter.%
+  \ #1}{}
+}
+\renewcommand{\sectionmark}[1]{%
+  \markright{\MakeUppercase{%
+  \thesection.\ #1}}%
+}
+
+\fancyhf{}
+\fancyhead[L]{}
+\fancyhead[C]{}
+\fancyhead[R]{}%\rightmark
+\fancyfoot[L]{}
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{}%\leftmark
+
+
+%theorems
+\mdfsetup{skipabove=1em, skipbelow=0em, innertopmargin=.5em, innerbottommargin=.5em}
+
+\theoremstyle{plain}
+
+\declaretheoremstyle[
+  headfont=\rmfamily\bfseries\scshape,
+  bodyfont=\rmfamily\mdseries,
+  %headpunct=.,
+  %notebraces={(}{)},
+  %postheadspace=\newline,
+  mdframed={leftline=true, rightline=true, topline=true, bottomline=true, nobreak=false}
+]{framedaround}
+
+\declaretheoremstyle[
+  headfont=\rmfamily\bfseries\scshape,
+  bodyfont=\rmfamily\mdseries,
+  mdframed={leftline=true, rightline=false, topline=false, bottomline=false, nobreak=false}
+]{framedleft}
+
+\declaretheoremstyle[
+  headfont=\rmfamily\itshape,
+  bodyfont=\rmfamily\mdseries,
+  notebraces={}{},
+  headpunct=.,
+  mdframed={skipabove=0em, leftline=true, rightline=false, topline=false, bottomline=false},
+  qed=/\!/\!/\!/%\qedsymbol
+]{proofbox}
+
+\declaretheoremstyle[
+  headfont=\rmfamily\bfseries\scshape,
+  bodyfont=\rmfamily\mdseries,
+  notebraces={}{},
+  headpunct=.,
+  mdframed={skipabove=0em, leftline=true, rightline=false, topline=false, bottomline=false, nobreak=false}
+]{noqedproofbox}
+
+\declaretheoremstyle[%
+  spaceabove=1em,
+  headfont=\rmfamily\bfseries\scshape,%
+  bodyfont=\rmfamily\mdseries,%
+]{defaultstyle}
+
+\declaretheorem[style=defaultstyle, numbered=no, name=Definition]{defi}
+\declaretheorem[style=defaultstyle, numbered=no, name=Theorem]{thm}
+\declaretheorem[style=defaultstyle, numbered=no, name=Lemma]{lem}
+\declaretheorem[style=defaultstyle, numbered=no, name=Corollary]{cor}
+\declaretheorem[style=defaultstyle, numbered=no, name=Proposition]{prop}
+\declaretheorem[style=defaultstyle, numbered=no, name=Remark]{rmk}
+\declaretheorem[style=defaultstyle, numbered=no, name=Notation]{notation}
+
+\declaretheorem[style=proofbox, numbered=no, name=Proof]{pf}
+\declaretheorem[style=noqedproofbox, numbered=no, name=Sketch]{sk}
+
+\declaretheorem[style=defaultstyle, numbered=no, name=Agreement]{agt}
+\declaretheorem[style=framedleft, numbered=no, name=Example]{eg}
+\declaretheorem[style=framedleft, numbered=no, name=Exercise]{ex}
+\declaretheorem[style=framedleft, numbered=no, name=Question]{question}
+
+
+%list
+%\newlist{conditions}{enumerate}{4}
+%\setlist[conditions]{label*=\roman*.}
+
+%\renewcommand{\labelitemi}{--}
+%\renewcommand{\labelitemii}{\(\circ\)}
+%\renewcommand{\labelenumi}{(\alph*)}
+%\renewcommand{\labelenumii}{\roman*.}
+%\renewcommand{\labelenumiii}{(\arabic*)}
+%\renewcommand{\labelenumiii}{\(\arabic*^\circ\)}
+%\setlist{leftmargin=1.5\parindent}
+
+
+%math
+\input{/Users/jack/Documents/Latex_headers/math_operators_and_terminologies.tex}
+
+
+%others
+%\linespread{1.36}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+
+\makeatother

@@ -1,0 +1,294 @@
+% letters
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathcal{F}}
+%\newcommand{\I}{\mathcal{I}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\M}{\textsf{M}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\V}{\mathcal{V}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\Z}{\mathbb{Z}}
+%\renewcommand{\H}{\mathbb{H}}
+\newcommand{\K}{\mathcal{K}}
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\S}{\mathcal{S}}
+\renewcommand{\Re}{\mathfrak{Re}}
+\renewcommand{\Im}{\mathfrak{Im}}
+
+
+%operators
+\DeclareMathOperator{\arsinh}{arsinh}
+\DeclareMathOperator{\arcosh}{arcosh}
+\DeclareMathOperator{\artanh}{artanh}
+\DeclareMathOperator{\arcoth}{arcoth}
+\DeclareMathOperator{\arsech}{arsech}
+\DeclareMathOperator{\arcsch}{arcsch}
+
+\DeclareMathOperator{\adj}{\mathsf{adj}}
+\DeclareMathOperator{\Ann}{\mathsf{Ann}}
+\DeclareMathOperator{\area}{area}
+\DeclareMathOperator{\argmin}{arg min}
+\DeclareMathOperator{\argmax}{arg max}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\ccl}{ccl}
+\DeclareMathOperator{\closure}{cl}
+\DeclareMathOperator{\colspace}{\mathsf{C}}
+\DeclareMathOperator{\compl}{comp}
+\DeclareMathOperator{\Cond}{\mathsf{Cond}}
+\let\det\relax
+\DeclareMathOperator{\det}{\mathsf{det}}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\ev}{\mathsf{ev}}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\id}{\mathsf{id}}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\irr}{irr}
+\let\ker\relax
+\DeclareMathOperator{\ker}{Ker}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\nullspace}{\mathsf{N}}
+\DeclareMathOperator{\nullity}{\mathsf{nullity}}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\powerset}{\mathcal{P}}
+\DeclareMathOperator{\proj}{\mathsf{proj}}
+\DeclareMathOperator{\range}{\mathsf{R}}
+\DeclareMathOperator{\rank}{\mathsf{rank}}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\spn}{\mathsf{span}}
+\DeclareMathOperator{\sym}{Sym}
+\DeclareMathOperator{\trace}{\mathsf{trace}}
+
+
+%Vector
+\DeclareDocumentCommand{\vectorbold}{ s m }{\IfBooleanTF{#1}{\boldsymbol{#2}}{\mathbf{#2}}} % Vector bold [star for Greek and italic Roman]
+\DeclareDocumentCommand{\vb}{}{\vectorbold} % Shorthand for \vectorbold
+
+\DeclareDocumentCommand{\vectorarrow}{ s m }{\IfBooleanTF{#1}{\vec{\boldsymbol{#2}}}{\vec{\mathbf{#2}}}} % Vector arrow + bold [star for Greek and italic Roman]
+\DeclareDocumentCommand{\va}{}{\vectorarrow} % Shorthand for \vectorarrow
+
+\DeclareDocumentCommand{\vectorunit}{ s m }{\IfBooleanTF{#1}{\boldsymbol{\hat{#2}}}{\mathbf{\hat{#2}}}} % Unit vector [star for Greek and italic Roman]
+\DeclareDocumentCommand{\vu}{}{\vectorunit} % Shorthand for \vectorunit
+
+\DeclareDocumentCommand{\dotproduct}{}{\boldsymbol\cdot} % Vector dot product symbol
+\DeclareDocumentCommand{\vdot}{}{\dotproduct} % Shorthand for \dotproduct [note that the command sequence \dp is protected]
+
+
+% brackets and braces
+\DeclareDocumentCommand\quantity{}{{\ifnum\z@=`}\fi\@quantity}
+\DeclareDocumentCommand\@quantity{ t\big t\Big t\bigg t\Bigg g o d() d|| }
+{ % Flexible automatic bracketing of an expression in () or [] or {} or ||
+  % Handles manual override of sizing
+  \IfBooleanTF{#1}{\let\ltag\bigl \let\rtag\bigr}{
+    \IfBooleanTF{#2}{\let\ltag\Bigl \let\rtag\Bigr}{
+      \IfBooleanTF{#3}{\let\ltag\biggl \let\rtag\biggr}{
+        \IfBooleanTF{#4}
+        {\let\ltag\Biggl \let\rtag\Biggr}
+        {\let\ltag\left \let\rtag\right}
+      }
+    }
+  }
+  % Handles actual bracketing
+  \IfNoValueTF{#5}{
+    \IfNoValueTF{#6}{
+      \IfNoValueTF{#7}{
+        \IfNoValueTF{#8}
+        {()}
+        {\ltag\lvert{#8}\rtag\rvert}
+      }
+      {\ltag(#7\rtag) \IfNoValueTF{#8}{}{|#8|}}
+    }
+    {\ltag[#6\rtag] \IfNoValueTF{#7}{}{(#7)} \IfNoValueTF{#8}{}{|#8|}}
+  }
+  {\ltag\lbrace#5\rtag\rbrace  \IfNoValueTF{#6}{}{[#6]} \IfNoValueTF{#7}{}{(#7)} \IfNoValueTF{#8}{}{|#8|}}
+  \ifnum\z@=`{\fi}
+}
+\DeclareDocumentCommand\qty{}{\quantity} % Shorthand for \quantity
+\DeclareDocumentCommand\pqty{ l m }{\braces#1{\lparen}{\rparen}{#2}}
+\DeclareDocumentCommand\bqty{ l m }{\braces#1{\lbrack}{\rbrack}{#2}}
+\DeclareDocumentCommand\Bqty{ l m }{\braces#1{\lbrace}{\rbrace}{#2}}
+\DeclareDocumentCommand\vqty{ l m }{\braces#1{\lvert}{\rvert}{#2}}
+
+\DeclareDocumentCommand\pmqty{m}{\begin{pmatrix}#1\end{pmatrix}}
+\DeclareDocumentCommand\Pmqty{m}{\left\lgroup\begin{matrix}#1\end{matrix}\right\rgroup}
+\DeclareDocumentCommand\bmqty{m}{\begin{bmatrix}#1\end{bmatrix}}
+\DeclareDocumentCommand\vmqty{m}{\begin{vmatrix}#1\end{vmatrix}}
+\DeclareDocumentCommand\matrixquantity{}{{\ifnum\z@=`}\fi\@matrixquantity}
+\DeclareDocumentCommand\@matrixquantity{ s g o d() d|| }{
+  \mathord{
+    \IfNoValueTF{#2}{
+      \IfNoValueTF{#3}{
+        \IfNoValueTF{#4}{
+          \IfNoValueTF{#5}{()}{
+            \vmqty{#5}
+          }
+        }{
+          \IfBooleanTF{#1}{\Pmqty{#4}}{\pmqty{#4}}
+          \IfNoValueTF{#5}{}{|#5|}
+        }
+      }{
+        \bmqty{#3} \IfNoValueTF{#4}{}{(#4)} \IfNoValueTF{#5}{}{|#5|}
+      }
+    }{
+      \begin{matrix}#2\end{matrix} \IfNoValueTF{#3}{}{[#3]} \IfNoValueTF{#4}{}{(#4)} \IfNoValueTF{#5}{}{|#5|}
+    }
+  }
+  \ifnum\z@=`{\fi}
+}
+\DeclareDocumentCommand\mqty{}{\matrixquantity} % Shorthand for \matrixquantity
+\DeclareDocumentCommand\matrixdeterminant{m}{\vmqty{#1}} % Matrix determinant
+\DeclareDocumentCommand\mdet{}{\matrixdeterminant} % Shorthand for matrix determinant
+
+\DeclareDocumentCommand\spmqty{m}{\pqty{\begin{smallmatrix}#1\end{smallmatrix}}}
+\DeclareDocumentCommand\sPmqty{m}{\left\lgroup\begin{smallmatrix}#1\end{smallmatrix}\right\rgroup}
+\DeclareDocumentCommand\sbmqty{m}{\bqty{\begin{smallmatrix}#1\end{smallmatrix}}}
+\DeclareDocumentCommand\svmqty{m}{\vqty{\begin{smallmatrix}#1\end{smallmatrix}}}
+\DeclareDocumentCommand\smallmatrixquantity{ s g o d() d|| }{
+  \mathord{
+    \IfNoValueTF{#2}{
+      \IfNoValueTF{#3}{
+        \IfNoValueTF{#4}{
+          \IfNoValueTF{#5}{()}{
+            \svmqty{#5}
+          }
+        }{
+          \IfBooleanTF{#1}{\sPmqty{#4}}{\spmqty{#4}}
+          \IfNoValueTF{#5}{}{|#5|}
+        }
+      }{
+        \sbmqty{#3} \IfNoValueTF{#4}{}{(#4)} \IfNoValueTF{#5}{}{|#5|}
+      }
+    }{
+      \begin{smallmatrix}#2\end{smallmatrix} \IfNoValueTF{#3}{}{[#3]} \IfNoValueTF{#4}{}{(#4)} \IfNoValueTF{#5}{}{|#5|}
+    }
+  }
+}
+\DeclareDocumentCommand\smqty{}{\smallmatrixquantity} % Shorthand for \smallmatrixquantity
+\DeclareDocumentCommand\smallmatrixdeterminant{m}{\svmqty{#1}} % Small matrix determinant
+\DeclareDocumentCommand\smdet{}{\smallmatrixdeterminant} % Shorthand for small matrix determinant
+\DeclareDocumentCommand\evaluated{ s g d[| d(| }
+{ % Vertical evaluation bar
+	\IfNoValueTF{#2}
+	{
+		\IfNoValueTF{#3}
+		{
+			\IfNoValueTF{#4}
+				{\argopen.\vphantom{\int}\argclose\rvert}
+				{\IfBooleanTF{#1}{\vphantom{#4}}{}\left(\IfBooleanTF{#1}{\smash{#4}}{#4}\vphantom{\int}\right\rvert}
+		}
+		{\IfBooleanTF{#1}{\vphantom{#3}}{}\left[\IfBooleanTF{#1}{\smash{#3}}{#3}\vphantom{\int}\right\rvert \IfNoValueTF{#4}{}{(#4|}}
+	}
+	{\IfBooleanTF{#1}{\vphantom{#2}}{}\left.\IfBooleanTF{#1}{\smash{#2}}{#2}\vphantom{\int}\right\rvert \IfNoValueTF{#3}{}{[#3|} \IfNoValueTF{#4}{}{(#4|}}
+}
+\DeclareDocumentCommand\eval{}{\evaluated} % Shorthand for evaluated
+
+\DeclarePairedDelimiterX{\abs}[1]{\lvert}{\rvert}{\ifblank{#1}{\:\cdot\:}{#1}}
+\DeclarePairedDelimiterX{\braket}[1]{\langle}{\rangle}{\ifblank{#1}{\:\cdot\:}{#1}}
+\DeclarePairedDelimiterX{\floor}[1]{\lfloor}{\rfloor}{\ifblank{#1}{\:\cdot\:}{#1}}
+\DeclarePairedDelimiterX{\ceiling}[1]{\lceil}{\rceil}{\ifblank{#1}{\:\cdot\:}{#1}}
+\DeclarePairedDelimiterX{\norm}[1]{||}{||}{\ifblank{#1}{\:\cdot\:}{#1}}
+\DeclarePairedDelimiterX{\innerp}[2]{\langle}{\rangle}{%
+  \ifblank{#1}{\:\cdot\:}{#1},%
+  \ifblank{#2}{\:\cdot\:}{#2}%
+}
+
+\providecommand{\given}{}%
+\newcommand{\SetSymbol}[1][]{%
+  \nonscript\:#1\vert%
+  \allowbreak%
+  \nonscript\:%
+  \mathopen{}%
+}%
+\DeclarePairedDelimiterX{\Set}[1]{\{}{\}}{
+  \renewcommand{\given}{\SetSymbol[\delimsize]}#1%
+}
+
+%tikz
+\pgfarrowsdeclarecombine{twolatex'}{twolatex'}{latex'}{latex'}{latex'}{latex'}
+\tikzset{->/.style = {decoration={markings,
+                                  mark=at position 1 with {\arrow[scale=2]{latex'}}},
+                      postaction={decorate}}}
+\tikzset{<-/.style = {decoration={markings,
+                                  mark=at position 0 with {\arrowreversed[scale=2]{latex'}}},
+                      postaction={decorate}}}
+\tikzset{<->/.style = {decoration={markings,
+                                   mark=at position 0 with {\arrowreversed[scale=2]{latex'}},
+                                   mark=at position 1 with {\arrow[scale=2]{latex'}}},
+                       postaction={decorate}}}
+\tikzset{->-/.style = {decoration={markings,
+                                   mark=at position #1 with {\arrow[scale=2]{latex'}}},
+                       postaction={decorate}}}
+\tikzset{-<-/.style = {decoration={markings,
+                                   mark=at position #1 with {\arrowreversed[scale=2]{latex'}}},
+                       postaction={decorate}}}
+\tikzset{->>/.style = {decoration={markings,
+                                  mark=at position 1 with {\arrow[scale=2]{latex'}}},
+                      postaction={decorate}}}
+\tikzset{<<-/.style = {decoration={markings,
+                                  mark=at position 0 with {\arrowreversed[scale=2]{twolatex'}}},
+                      postaction={decorate}}}
+\tikzset{<<->>/.style = {decoration={markings,
+                                   mark=at position 0 with {\arrowreversed[scale=2]{twolatex'}},
+                                   mark=at position 1 with {\arrow[scale=2]{twolatex'}}},
+                       postaction={decorate}}}
+\tikzset{->>-/.style = {decoration={markings,
+                                   mark=at position #1 with {\arrow[scale=2]{twolatex'}}},
+                       postaction={decorate}}}
+\tikzset{-<<-/.style = {decoration={markings,
+                                   mark=at position #1 with {\arrowreversed[scale=2]{twolatex'}}},
+                       postaction={decorate}}}
+
+\tikzset{circ/.style = {fill, circle, inner sep = 0, minimum size = 3}}
+\tikzset{scirc/.style = {fill, circle, inner sep = 0, minimum size = 1.5}}
+\tikzset{mstate/.style={circle, draw, blue, text=black, minimum width=0.7cm}}
+
+\tikzset{eqpic/.style={baseline={([yshift=-.5ex]current bounding box.center)}}}
+\tikzset{commutative diagrams/.cd,cdmap/.style={/tikz/column 1/.append style={anchor=base east},/tikz/column 2/.append style={anchor=base west},row sep=tiny}}
+
+\definecolor{mblue}{rgb}{0.2, 0.3, 0.8}
+\definecolor{morange}{rgb}{1, 0.5, 0}
+\definecolor{mgreen}{rgb}{0.1, 0.4, 0.2}
+\definecolor{mred}{rgb}{0.5, 0, 0}
+
+
+%Others
+\newcommand{\littletaller}{\mathchoice{\vphantom{\big|}}{}{}{}}%
+\newcommand{\restr}[2]{{%restriction
+  \left.\kern-\nulldelimiterspace %resize the bar with \right
+  #1 %
+  \littletaller %
+  \right|_{#2} % the delimiter
+}}
+
+\DeclareFontFamily{U}{tipa}{}
+\DeclareFontShape{U}{tipa}{m}{n}{<->tipa10}{}
+\newcommand{\arc@char}{{\usefont{U}{tipa}{m}{n}\symbol{62}}}%
+\newcommand{\arc}[1]{\mathpalette\arc@arc{#1}}
+\newcommand{\arc@arc}[2]{%
+  \sbox0{$\m@th#1#2$}%
+  \vbox{
+    \hbox{\resizebox{\wd0}{\height}{\arc@char}}
+    \nointerlineskip
+    \box0
+  }%
+}
+
+%\renewcommand{\subset}{\subseteq}
+%\renewcommand{\supset}{\supseteq}
+\newcommand{\nimplies}{\centernot\implies}
+\newcommand{\nimpliedby}{\centernot\impliedby}
+\renewcommand{\nmid}{\centernot\mid}
+\newcommand{\contradiction}{\rightarrow\!\leftarrow}
+\newcommand{\st}{s.t.\ }
+\newcommand{\Cdot}{\:\cdot\:}
+\newcommand{\Vdot}{\:\vdot\:}
+\newcommand{\Pmod}[1]{\ (\operatorname{mod}\,#1)}
