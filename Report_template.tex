@@ -1,0 +1,63 @@
+\documentclass[12pt]{report}
+
+%\def\ntitle{Book}
+%\def\nauthor{KT}
+%\def\today{Fall, 2023}
+
+\input{/Users/jack/Documents/Latex_headers/report_header.tex}
+
+%---------------------
+\begin{document}
+\maketitle
+\tableofcontents
+
+\begin{abstract}
+\lipsum[20]
+\end{abstract}
+
+\pagenumbering{arabic}
+\chapter{Chapter \Romannum{1}}
+\section{Section first}
+\begin{thm}[qweqwe]
+\hfill
+  \begin{enumerate}[(a)]
+  \item \lipsum[1]
+  \item Ms.\ CupCake:\index{Index1!example1-1}
+      \[
+      1 + 1 = 2.
+      \]
+  \end{enumerate}
+\end{thm}
+\begin{pf}
+\lipsum[2]
+\end{pf}
+
+\lipsum[3]
+\begin{center}\index{Index1!example1-2}
+  \begin{tikzpicture}[scale=5]
+  \draw [<->] (0, 1) node [above] {\(x_{n + 1}\)} -- (0, 0) -- (1.2, 0) node [right] {\(x_n\)};
+  \draw [mgreen, semithick] (0, 0) -- (1, 1) node [right] {\(x_{n + 1} = x_n\)};
+  \draw [mblue, semithick] (0, 0) parabola bend (0.5, 0.45) (1, 0);
+  
+  \draw [mred] (0.2, 0) node [below, black] {\(x_0\)}
+  -- (0.2, 0.288) -- (0.288, 0.288)
+  -- (0.288, 0.369) -- (0.369, 0.369)
+  -- (0.369, 0.419) -- (0.419, 0.419)
+  -- (0.419, 0.438) -- (0.438, 0.438)
+  -- (0.438, 0.443) -- (0.443, 0.443);
+  \end{tikzpicture}
+\end{center}
+
+\section{Section second}
+\subsection{Subsec f}
+\lipsum[4]\index{Index2!example2}
+
+\chapter{Chapter \Romannum{2}}
+\subsection{Subsec s}
+\lipsum[5-8]\index{Index3!example3}
+
+\section{Section t}
+\lipsum[9-15]
+
+\printindex
+\end{document}
