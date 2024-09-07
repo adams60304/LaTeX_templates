@@ -9,3 +9,5 @@ LaTeX header templates for various document types.
 Before using the above headers, please download the following auxiliary files:
 - `math_operators_and_terminologies.tex`
 - `index_style.ist`
+
+The functionality of each template matches its name.
