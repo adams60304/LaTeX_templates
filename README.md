@@ -6,7 +6,7 @@ LaTeX header templates for various document types.
 - `report` (in `report_template.tex`)
 - `beamer` (in `beamer_template.tex`)
 
-Before using the above headers, please download the following auxiliary files:
+Before using the above headers, please download the following auxiliary files (in `auxiliaries`):
 - `math_operators_and_terminologies.tex`
 - `index_style.ist`
 
